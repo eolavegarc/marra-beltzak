@@ -49,3 +49,18 @@ basic.forever(function () {
         atal_2 = 1
     }
 })
+basic.forever(function () {
+    if (atal_2 == 1) {
+        if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 30) {
+            DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 40)
+        } else if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 15) {
+            DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 60)
+        } else if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 10) {
+            DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 25)
+        } else {
+            DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 0)
+            basic.showIcon(IconNames.Ghost)
+            atala_3 = 0
+        }
+    }
+})
