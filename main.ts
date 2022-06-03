@@ -36,6 +36,10 @@ basic.forever(function () {
                 DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 100)
             }
         }
+        if (DFRobotMaqueenPlus.readPatrol(Patrol.L2) == 1 && DFRobotMaqueenPlus.readPatrol(Patrol.R2) == 1) {
+            atala_1 = 0
+            atal_2 = 1
+        }
     }
 })
 basic.forever(function () {
@@ -52,13 +56,15 @@ basic.forever(function () {
 basic.forever(function () {
     if (atal_2 == 1) {
         if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 30) {
-            DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 40)
+            DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 60)
         } else if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 15) {
-            DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 60)
+            DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 35)
         } else if (DFRobotMaqueenPlus.ultraSonic(PIN.P1, PIN.P2) > 10) {
-            DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 25)
+            DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 10)
         } else {
-            DFRobotMaqueenPlus.mototRun(Motors.ALL, Dir.CW, 0)
+            DFRobotMaqueenPlus.mototRun(Motors.M2, Dir.CW, 60)
+            DFRobotMaqueenPlus.mototRun(Motors.M1, Dir.CW, 0)
+            basic.pause(2500)
             basic.showIcon(IconNames.Ghost)
             atala_3 = 0
         }
